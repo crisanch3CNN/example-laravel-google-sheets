@@ -18,9 +18,11 @@ class GoogleSheetsController extends Controller
         // ]);
         (new GoogleSheetsServices())->appendSheet([
             [
-                'cris sanchez',
-                'cris@gmail.com'
-            ]
+                '2345678765'
+            ],
+            // [
+            //     '431256765455676'
+            // ]
         ]);
 
         $data = (new GoogleSheetsServices())->readSheet();
