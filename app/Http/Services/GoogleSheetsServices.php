@@ -10,6 +10,15 @@ use Google\Service\ValueRange;
 class GoogleSheetsServices
 {
 
+    public $client, $services, $documentId, $range;
+
+    public function __construct()
+    {
+        $this->client = $this->getClient();
+        $this->service = new Sheets($this->client);
+        $this->documentId = '1FYMwlxvRexxT8dqLtHvMe1uEBhOmhQasR-cmYT5xCcs';
+        $this->range = 'A:Z';
+    }
 
     public function getClient()
     {
@@ -24,11 +33,7 @@ class GoogleSheetsServices
     }
     public function readSheet()
     {
-        $client = $this->getClient();
-        $service = new Sheets($client);
-        $documentId = '1FYMwlxvRexxT8dqLtHvMe1uEBhOmhQasR-cmYT5xCcs';
-        $range = 'A:Z';
-        $doc = $service->spreadsheets_values->get($documentId, $range);
+        $doc = $this->service->spreadsheets_values->get($this->documentId, $this->range);
         return $doc;
     }
 }
